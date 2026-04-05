@@ -34,7 +34,7 @@
         <Button x:Name="acButton" Content="AC"
                 Margin="5"
                 Grid.Row="1"/>
-        <Button x:Name="plusMinusButton" Content="+/1"
+        <Button x:Name="plusMinusButton" Content="+/-"
                 Margin="5"
                 Grid.Row="1"
                 Grid.Column="1"/>
@@ -49,6 +49,7 @@
 
         <!-- 2nd row buttons-->
         <Button x:Name="sevenButton" Content="7"
+                Click="sevenButton_Click"
                 Margin="5"
                 Grid.Row="2"/>
         <Button x:Name="eightButton" Content="8"
