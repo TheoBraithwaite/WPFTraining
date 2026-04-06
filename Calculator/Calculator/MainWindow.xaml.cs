@@ -62,6 +62,17 @@ namespace Calculator
 
         private void sevenButton_Click(object sender, RoutedEventArgs e)
         {
+            if (double.TryParse(resultLabel.Content.ToString(), out lastNumber))
+            {
+                resultLabel.Content = "0";
+            }
+        }
+
+        private void NumberButton_Click(object sender, RoutedEventArgs e)
+        {
+            // We're certain that there won't be anything other than an integer for the number buttons
+            int selectedValue = int.Parse((sender as Button).Content.ToString());
+
             if (resultLabel.Content.ToString() == "0")
             {
                 resultLabel.Content = "7";
