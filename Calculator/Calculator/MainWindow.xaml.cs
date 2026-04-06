@@ -60,7 +60,7 @@ namespace Calculator
             resultLabel.Content = "0";
         }
 
-        private void OperationButton_Click(object sender, RoutedEventArgs e)
+        private void sevenButton_Click(object sender, RoutedEventArgs e)
         {
             if (double.TryParse(resultLabel.Content.ToString(), out lastNumber))
             {
@@ -70,16 +70,36 @@ namespace Calculator
 
         private void NumberButton_Click(object sender, RoutedEventArgs e)
         {
-            // We're certain that there won't be anything other than an integer for the number buttons
-            int selectedValue = int.Parse((sender as Button).Content.ToString());
+            int selectedValue = 0;
+
+            if (sender == zeroButton)
+                selectedValue = 0;
+            if (sender == oneButton)
+                selectedValue = 1;
+            if (sender == twoButton)
+                selectedValue = 2;
+            if (sender == threeButton)
+                selectedValue = 3;
+            if (sender == fourButton)
+                selectedValue = 4;
+            if (sender == fiveButton)
+                selectedValue = 5;
+            if (sender == sixButton)
+                selectedValue = 6;
+            if (sender == sevenButton)
+                selectedValue = 7;
+            if (sender == eightButton)
+                selectedValue = 8;
+            if (sender == nineButton)
+                selectedValue = 9;
 
             if (resultLabel.Content.ToString() == "0")
             {
-                resultLabel.Content = $"{selectedValue}";
+                resultLabel.Content = "7";
             }
             else
             {
-                resultLabel.Content = $"{resultLabel.Content}{selectedValue}";
+                resultLabel.Content = $"{resultLabel.Content}7";
             }
         }
     }
