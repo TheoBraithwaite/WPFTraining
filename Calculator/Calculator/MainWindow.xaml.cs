@@ -21,6 +21,7 @@ namespace Calculator
     public partial class MainWindow : Window
     {
         double lastNumber, result;
+        double firstNumber;
         SelectedOperator selectedOperator;
 
         public MainWindow()
@@ -59,11 +60,24 @@ namespace Calculator
             }
         }
 
+        //  Notes for percent button
+        // We want 50 + 5% = (52.5%)
+        // 80 + 10% (8) = 88
+
         private void PercentButton_Click(object sender, RoutedEventArgs e)
         {
             if (double.TryParse(resultLabel.Content.ToString(), out lastNumber))
             {
-                lastNumber = lastNumber / 100;
+                if(firstNumber != 0)
+                {
+                    lastNumber = lastNumber / 100;
+                    lastNumber = firstNumber * lastNumber;
+                    lastNumber = firstNumber + lastNumber;
+                }
+                else
+                {
+                    lastNumber = lastNumber / 100;
+                }
                 resultLabel.Content = lastNumber.ToString();
             }
         }
@@ -84,6 +98,7 @@ namespace Calculator
 
         private void OperationButton_Click(object sender, RoutedEventArgs e)
         {
+            firstNumber = double.Parse(resultLabel.Content.ToString());
             if (double.TryParse(resultLabel.Content.ToString(), out lastNumber))
             {
                 resultLabel.Content = "0";
